@@ -1,28 +1,109 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <div id="bg" :style="{'background-image': `url(${require('@/assets/croissant.jpg')})`}">
+      <v-app-bar
+        dark
+        dense
+        absolute
+        elevate-on-scroll
+        scroll-target="#content"
+        color="rgba(255,255,255,0.10)"
+      >
+        <v-toolbar-title>Thyme: Save some time</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon><v-icon>mdi-plus</v-icon></v-btn>
+      </v-app-bar>
+      <v-content id="content">
+          <Card class="d-inline-flex my-3" v-for="recipe in recipes" :key="recipe.id" v-bind="recipe"></Card>
+      </v-content>
+    </div>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Card from './components/Card';
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    Card,
+  },
+
+  data: () => ({
+    recipes: [{
+        id: 0,
+        title: "Apple Pie",
+        duration: "4 hours",
+        ingredients: ["apples", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 1,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 2,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 3,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 4,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 5,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 6,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 7,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 8,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }, {
+        id: 9,
+        title: "Pecan Pie",
+        duration: "2 hours",
+        ingredients: ["pecans", "love"],
+        steps: ["Preheat Oven", "enjoy"]
+      }]
+  })
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #bg {
+    height: 100%;
+    width: auto;
+    background-attachment: fixed; 
+    background-size: cover;
+  }
+
+  #content {
+    margin-top: 50px;
+  }
 </style>

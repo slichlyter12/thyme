@@ -1,26 +1,32 @@
 <template>
     <v-card
-        class="mx-3 d-block"
-        max-width="344"
+        class="mx-3"
+        max-width="650"
         hover
     >
-        <v-list-item three-line>
-            <v-list-item-content>
-                <div class="overline mb-4">{{ duration }}</div>
-                <v-list-item-title class="headline mb-1">{{ title }}</v-list-item-title>
-                <v-list-item-subtitle>
-                    <ul>
-                        <li v-for="ingredient in ingredients" :key="ingredient">{{ ingredient }}</li>
-                    </ul>
-                </v-list-item-subtitle>
-                <hr />
-                <v-list-item-subtitle>
-                    <ol>
-                        <li v-for="step in steps" :key="step">{{ step }}</li>
-                    </ol>
-                </v-list-item-subtitle>
-            </v-list-item-content>
-        </v-list-item>
+        <v-list max-width="200">
+            <v-list-item>
+                <v-list-item-content>
+                    <v-card-title>{{ name }}</v-card-title>
+                    <v-card-subtitle>{{ description }}</v-card-subtitle>
+                </v-list-item-content>
+            </v-list-item>
+        </v-list>
+        <v-card-text>
+            <v-list>
+                <ul>
+                    <li v-for="(amount, ingredient, index) in ingredients" :key="index">
+                        {{ ingredient }}: {{ amount }}
+                    </li>
+                </ul>
+            </v-list>
+            <hr />
+            <v-list>
+                <ol>
+                    <li v-for="step in steps" :key="step">{{ step }}</li>
+                </ol>
+            </v-list>
+        </v-card-text>
     </v-card>
 </template>
 <script>
@@ -28,11 +34,19 @@ export default {
     name: 'Card',
 
     props: {
-        id: Number,
-        duration: String,
-        title: String,
-        ingredients: Array,
+        id: String,
+        author: String,
+        name: String,
+        ingredients: Object,
         steps: Array,
+        cuisine: String,
+        description: String,
+        imageName: String
     }
 }
 </script>
+<style>
+    .v-card__text, .v-card__title {
+        word-break: normal;
+    }
+</style>

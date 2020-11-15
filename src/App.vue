@@ -7,7 +7,7 @@
         absolute
         elevate-on-scroll
         scroll-target="#content"
-        color="rgba(255,255,255,0.10)"
+        color="rgba(0,0,0,0.3)"
       >
         <v-toolbar-title>Thyme: Save some time</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -31,68 +31,15 @@ export default {
   },
 
   data: () => ({
-    recipes: [{
-        id: 0,
-        title: "Apple Pie",
-        duration: "4 hours",
-        ingredients: ["apples", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 1,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 2,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 3,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 4,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 5,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 6,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 7,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 8,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }, {
-        id: 9,
-        title: "Pecan Pie",
-        duration: "2 hours",
-        ingredients: ["pecans", "love"],
-        steps: ["Preheat Oven", "enjoy"]
-      }]
-  })
+    recipes: []
+  }),
+
+  created() {
+    // let headers = {"Access-Control-Allow-Origin": "true"}
+    fetch("http://localhost:8080/api/recipe")
+    .then(response => response.json())
+    .then(data => (this.recipes = data));
+  }
 }
 </script>
 <style>
